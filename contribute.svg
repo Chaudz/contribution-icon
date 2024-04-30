@@ -1,7 +1,7 @@
-<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
     <style>
         .blink {
-            fill: green;
+            fill: #00FF00; /* Green color */
             opacity: 1;
             animation: blink-animation 1s infinite;
         }
@@ -12,8 +12,15 @@
             }
         }
     </style>
-    <rect x="10" y="10" width="30" height="30" class="blink" />
-    <rect x="50" y="10" width="30" height="30" class="blink" style="animation-delay: 0.2s;" />
-    <rect x="90" y="10" width="30" height="30" class="blink" style="animation-delay: 0.4s;" />
-    <rect x="130" y="10" width="30" height="30" class="blink" style="animation-delay: 0.6s;" />
+    <!-- Generate multiple rows and columns of blinking rects -->
+    <!-- Adjust the values of 'x', 'y', and 'animation-delay' as needed -->
+    <g>
+        <!-- Loop through rows -->
+        <!-- Modify these values if you need a different arrangement or more rectangles -->
+        ${Array.from({length: 5}, (_, rowIndex) => 
+            Array.from({length: 20}, (_, colIndex) => 
+                `<rect x="${10 + colIndex * 38}" y="${10 + rowIndex * 38}" width="30" height="30" class="blink" style="animation-delay: ${0.1 * colIndex + 0.1 * rowIndex}s;" />`
+            ).join('')
+        ).join('')}
+    </g>
 </svg>
